@@ -1,9 +1,9 @@
-const { User } = require("../models");
+const { User } = require("../models/User");
 
 const userController = {
     // GET all users 
     getUsers(req, res) {
-        User.find()
+        User.find({})
             .then((dbUserData) => {
                 res.json(dbUserData);
             })
@@ -13,8 +13,8 @@ const userController = {
             });
         },
         // GET single user by id
-        getUserById(req, res) {
-            User.findOne({ _id: req.params.userId })
+        getUserById({ params }, res) {
+            User.findOne({ _id: params.userId })
                 .then((dbUserData) => {
                     if (!dbUserData) {
                         return res.status(404).json({ message: "User ID not found!" })
@@ -27,15 +27,10 @@ const userController = {
                 });
             },
             // CREATE new user
-            createUser(req, res) {
-                User.create(req.body)
-                  .then((dbUserData) => {
-                    res.json(dbUserData);
-                  })
-                  .catch((err) => {
-                    console.log(err);
-                    res.status(500).json(err);
-                  });
+            createUser({ body }, res) {
+                User.create(body)
+                  .then(dbUserData => res.json(dbUserData))
+                  .catch( err => res.status(400).json(err));
               },
             // UPDATE user
             updateUser(req, res) {
