@@ -1,12 +1,12 @@
 // user model. using validator to validate email. thanks stack overflow!
-
 const { Schema, model } = require("mongoose");
+
 // import { isEmail } from "validator";
 
 
 const userSchema = new Schema(
     {
-        userName: {
+        username: {
             type: String,
             required: true,
             unique: true,
