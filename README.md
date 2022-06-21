@@ -13,3 +13,9 @@ WHEN I test API POST, PUT, and DELETE routes in Insomnia
 THEN I am able to successfully create, update, and delete users and thoughts in my database
 WHEN I test API POST and DELETE routes in Insomnia
 THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
+
+Check out the videos below!
+
+Video Part 1: https://drive.google.com/file/d/1XfIVcvtKQuWjHENlqaJxMT7teH-63dnL/view
+Video Part 2: https://drive.google.com/file/d/19x2q_JuDVM4q7v_tC0_RBAeRY-XbAikF/view
+https://github.com/bshort985/SocialNetworkAPI
