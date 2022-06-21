@@ -1,8 +1,5 @@
-// user model. using validator to validate email. thanks stack overflow!
+// user model. 
 const { Schema, model } = require("mongoose");
-
-// import { isEmail } from "validator";
-
 
 const userSchema = new Schema(
     {
@@ -16,7 +13,7 @@ const userSchema = new Schema(
             type: String,
             required: true,
             unique: true,
-            // validate: { validator: isEmail , message: "Invalid Email"}
+            match: [/.+@.+\..+/, "Invalid Email!"]
         },
         thoughts: [{
             type: Schema.Types.ObjectId,
@@ -37,6 +34,10 @@ const userSchema = new Schema(
     id: false,
     }
 );
+
+userSchema.virtual("friendCount").get(function () {
+    return this.friends.length;
+});
 
 const User = model("User", userSchema);
 module.exports = { User };
